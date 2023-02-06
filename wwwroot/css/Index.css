@@ -1,0 +1,253 @@
+.mainUL {
+    height: 300px; 
+    width: 350; 
+    border: 1px; 
+    border-style: solid; 
+    list-style-type: none; 
+    padding-left:10px; 
+    padding-top:5px;
+    margin-left: 10px;
+}
+.listMessage{
+    margin-right:10px ;
+    height: 300px; 
+    width: 350px; 
+    border: 1px; 
+    border-style: solid; 
+    list-style-type: none; 
+    padding-left:10px; 
+    padding-top:5px;
+    overflow: scroll;
+    border-bottom: none;
+}
+#main-container{
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.accOnline{
+    width: 150px;
+    text-align: center;
+    border: none;
+    background-color: #DCDCDC;
+}
+.GroupOnline{
+    text-align: initial;
+    border: none;
+    background-color: white;
+}
+.GroupOnline:hover{
+    background-color: #DCDCDC;
+    border-radius: 15px;
+}
+li span{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+li p{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 0px;
+}
+li{
+    margin-top: 5px;
+
+}
+#containerList{
+    margin-right: 0px;
+    padding-right: 0px;
+    width: 10%;
+}
+#WrapperAccountOnline{
+    border: 1px;
+    border-style: solid;
+    border-color: gainsboro;
+    border-left: none;
+    text-align: center;
+    width: 25%;
+}
+#listMessageClient{
+    padding-right: 10px;
+    margin-right: 50px;
+    overflow: scroll;
+    border-bottom: none;
+}
+#NameLog{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+#Logout:hover{
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 10px;
+}
+ul {
+    list-style-type: none;
+}
+#Left{
+    height: 410px;
+    width: 25%;
+    border: 1px;
+    border-style: solid;
+    border-color: #cdcbcb;
+    padding: 5px;
+    overflow: auto;
+    border-right: none;
+}
+#hideListGroup :hover{
+    background-color: rgb(189, 189, 189);
+}
+.container{
+    width: 100%;
+    max-width: 1600px;
+}
+#ChatClient{
+    width: 350px;
+    margin-right: 10px;
+}
+#ChatGroup{
+    padding: 10px;
+    width: 50%;
+    border: 1px;
+    border-style: solid;
+    border-color: #cdcbcb;
+    padding-right: 0px;
+}
+#sendMessageToGroup{
+    border-radius: 10px;
+}
+#messageToGroup{
+    border-radius: 10px;
+    border: none;
+    background-color: #ebebeb;
+    width: 82%;
+}
+#listMessageGroup{
+    overflow: auto;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-color: #ebebeb;
+}
+#titleOfGroup{
+    display: flex;
+    justify-content: space-between;
+}
+
+#titleOfLeft{
+    display: flex;
+    justify-content: space-between;
+}
+.icon{
+    text-align: center;
+    background-color: #ebebeb;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+
+}
+#searchConversation{
+    width: 95%;
+    border-radius: 50px;
+    border-style:none ;
+    background-color: #ebebeb;
+}
+#groupNameTitle{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+#avatar{
+    border-radius: 50%;
+    height:40px;
+    width: 40px;
+}
+.image{
+    border-radius: 50%;
+    height:35px; 
+    width: 35px;
+    margin-bottom: 5px;
+}
+#profile{
+    border-radius: 50%; 
+    border:none;
+    size: 35px;
+    padding: inherit;
+}
+
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    padding-top: 10px;
+    background-color: #f9f9f9;
+    min-width: 300px;
+    box-shadow: 10px 8px 16px 10px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {display: block;}
+
+#manageAccount{
+    text-align: left;
+    width: 100%;
+    border: none;
+}
+
+#manageAccount:hover{
+    background-color: #f1f1f1;
+}
+#logout{
+    width: 100%;
+    border: none;
+}
+.information{
+    display: flex;
+}
+
+.MenuInfor{
+    text-align: left;
+    margin-left: 20px;
+    height: 35px;
+    font-size: 18px;
+    border: none;
+    width: 85%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.MenuInfor:hover{
+    background-color: #DCDCDC;
+    border-radius: 15px;
+}
+
+input:focus{
+    outline: none;
+}

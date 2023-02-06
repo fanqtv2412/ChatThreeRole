@@ -1,0 +1,50 @@
+@{
+    ViewBag.Title = "Admin";
+}
+
+<head>
+    <script src="http://127.0.0.1:11111/wwwroot/js/signalr/dist/browser/signalr.js"></script>
+    <script src="http://127.0.0.1:11111/wwwroot/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="http://127.0.0.1:11111/wwwroot/lib/jquery/dist/jquery.js"></script>
+    <script src="http://127.0.0.1:11111/wwwroot/lib/jquery/dist/jquery.min.js"></script>
+</head>
+<div>
+    <label id="TotalOnline"></label>
+</div>
+<div>
+    <ul id = "listMessInvoke">
+        
+    </ul>
+</div>
+@section Scripts{
+    <script>
+        var arr="";
+        const connection = new signalR.HubConnectionBuilder().withUrl("/ChatHub").withAutomaticReconnect([0, 1000, 5000, null]).build();
+        connection.start().then(() => {
+            connection.on("TotalConnect", function (amountOfAccount) {
+                document.getElementById("TotalOnline").innerText = "Online: " + amountOfAccount;
+            });
+        });
+        connection.on("Status", function(name){
+            arr = arr + "," + name;
+            console.log(arr);
+            connection.invoke("SendTotalAccount", arr);
+        });
+        connection.on("RequireSendToAllCLient", function(message){
+            if(message){
+                console.log(message);
+                var li = document.createElement("li");
+                var button = document.createElement("button");
+                button.className = "Accept";
+                button.innerHTML = "&#10004";
+                button.setAttribute("onclick", "Accept()");
+                li.appendChild(button);
+                li.textContent= message;
+                document.getElementById("listMessInvoke").appendChild(li);
+            }
+        });
+        function Accept(){
+
+        }
+    </script>
+}

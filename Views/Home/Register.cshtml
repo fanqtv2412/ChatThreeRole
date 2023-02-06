@@ -1,0 +1,38 @@
+@model ChatThreeRole.Models.AccountModel;
+@{
+    ViewBag.Title = "Register";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:11111/wwwroot/css/Login.css">
+</head>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active"> Sign In </h2>
+        <a href="https://localhost:7069/Home/Register" class="inactive underlineHover">Register</a>
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="http://127.0.0.1:11111/wwwroot/images/download.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+        <form asp-action="Register"  method="post">
+            <input asp-for="Email" type="text" id="email" class="fadeIn second"  placeholder="login">
+            <input asp-for="FullName" type="text" id ="fullname" class="fadeIn second" placeholder="full name">
+            <input asp-for="Password"  type="text" id="password" class="fadeIn third"  placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Register">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="https://localhost:7069/Home/Login">Back to login</a>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+    <script>
+        if('@ViewBag.Notify') alert('@ViewBag.Notify');
+    </script>
+}
