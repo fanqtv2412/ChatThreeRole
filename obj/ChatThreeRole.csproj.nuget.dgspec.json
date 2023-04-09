@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPTS\\Exercise\\Net6.0\\ChatThreeRoles\\ChatThreeRole\\ChatThreeRole.csproj": {}
+    "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\ChatThreeRole\\ChatThreeRole.csproj": {}
   },
   "projects": {
-    "D:\\FPTS\\Exercise\\Net6.0\\ChatThreeRoles\\ChatThreeRole\\ChatThreeRole.csproj": {
+    "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\ChatThreeRole\\ChatThreeRole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTS\\Exercise\\Net6.0\\ChatThreeRoles\\ChatThreeRole\\ChatThreeRole.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\ChatThreeRole\\ChatThreeRole.csproj",
         "projectName": "ChatThreeRole",
-        "projectPath": "D:\\FPTS\\Exercise\\Net6.0\\ChatThreeRoles\\ChatThreeRole\\ChatThreeRole.csproj",
-        "packagesPath": "C:\\Users\\DAT\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTS\\Exercise\\Net6.0\\ChatThreeRoles\\ChatThreeRole\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\ChatThreeRole\\ChatThreeRole.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\ChatThreeRole\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DAT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -53,6 +53,12 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -61,7 +67,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -73,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

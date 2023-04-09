@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\bin\\Debug"
+    "\\bin\\Debug",
+    "\\Views",
+    "\\Views\\Home",
+    "\\wwwroot\\js"
   ],
   "SelectedNode": "\\Program.cs",
   "PreviewInSolutionExplorer": false

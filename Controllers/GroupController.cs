@@ -1,15 +1,19 @@
 using System.Security.Cryptography.X509Certificates;
+using ChatThreeRole.Hubs;
 using ChatThreeRole.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
-
+using Microsoft.AspNetCore.SignalR;
 
 [Route("api/[controller]")]
 [ApiController]
 public class GroupController: ControllerBase{
-    public readonly GroupService _service;
-    public GroupController(GroupService service){
+    private readonly GroupService _service;
+    private readonly IHubContext<ChatHub> _contextHub;
+    public GroupController(GroupService service, IHubContext<ChatHub> contextHub)
+    {
         _service = service;
+        _contextHub = contextHub;
     }
 
     [HttpGet]
@@ -36,12 +40,16 @@ public class GroupController: ControllerBase{
     public string GetImageOfGroup([FromQuery] int id){
         return _service.GetImageOfGroup(id);
     }
-
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
         var group = await _service.SelectById(id);
         return Ok(group);
+    }
+    [HttpGet("GetThroughHub")]
+    public async Task<List<string>> GetAllNameGroupThroughHub()
+    {
+        return ChatHub._listNameGroup;
     }
     
 }

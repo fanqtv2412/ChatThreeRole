@@ -130,6 +130,7 @@ function ClickSearchUserByEmail(myEmail) {
 
 async function CaptureSearchUserByEmail(event, email) {
     var arrAccount = await GetAllAcc();
+    console.log(arrAccount);
     var PATTERN = event.target.value;
     var arrName = arrAccount.filter(function (el) {
         return el.fullName.toLowerCase().includes(PATTERN);

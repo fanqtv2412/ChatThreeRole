@@ -34,10 +34,10 @@ async function GetAllGroupRegistered(email) {
     await $.ajax(settings).done(function (response) {
         res = response;
     });
-    //let arr = new Array();
-    //res.groups.forEach(element => {
-    //    arr.push(element.groupName);
-    //});
+    let arr = new Array();
+    res.groups.forEach(element => {
+        arr.push(element.groupName);
+    });
     return res;
 }
 

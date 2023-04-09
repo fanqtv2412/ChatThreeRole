@@ -30,21 +30,20 @@ async function SendMessageToGroupFunc(constGroupName, Name, constGroupID, email)
         var selectList = document.getElementById('selectListGroup');
         var firstChild = selectList.getElementsByTagName('div')[0];
         firstChild.id = constGroupID;
-        console.log(firstChild);
-
     }
     var mess = $("#messageToGroup").val();
     if (mess) {
-        console.log(constGroupName + constGroupID + email + mess);
+        console.log(constGroupName);
+        var div = await CreateGroup(constGroupName, constGroupID, tempImg, email + ": " + mess, Date.now(), email);
+
         var tempDiv = document.getElementById(constGroupID);
         var tempImg = tempDiv.getElementsByTagName('img')[0].src;
-        await connection.invoke("SendMessageToGroup", constGroupName.trim(), email + ": " + mess, constGroupID);
+        await connection.invoke("SendMessageToGroup", constGroupName.trim(), email + ": " + mess, constGroupID.toString());
         var li = DisplayMessageSender(mess);
         document.getElementById("listMessageGroup").appendChild(li);
         document.getElementById("messageToGroup").value = "";
         SaveMesageGroup(constGroupID, email + ":" + mess, parseDate());
         document.getElementById(constGroupID).remove();
-        var div = await CreateGroup(constGroupName, constGroupID, tempImg, email + ": " + mess, Date.now(), email);
         var body = document.getElementById("selectListGroup");
         body.insertBefore(div, body.firstChild);
         SetPositionScrollBar('#listMessageGroup');

@@ -2,9 +2,16 @@ async function CreateGroup(groupName, id = null, avatar, msg, hoursLater = null,
     var titleName;
     if(groupName.indexOf(':') > -1){
         var handleName = groupName.split(':');
-        if(handleName[0].trim() == email.trim()){titleName = await getNameByEmail(handleName[1].trim());}
-        else if(handleName[1].trim() == email.trim()){titleName = await getNameByEmail(handleName[0].trim());}
+        if (handleName[0].trim() == email.trim()) {
+            titleName = await getNameByEmail(handleName[1].trim());
+        }
+        else if (handleName[1].trim() == email.trim()) {
+            titleName = await getNameByEmail(handleName[0].trim());
+        }
         else titleName = groupName;
+        //console.log(groupName + ":" + handleName[0] + ":" + handleName[1]);
+        //connection.invoke("AddToGroup", groupName, handleName[0]);
+        //connection.invoke("AddToGroup", groupName, handleName[1]);
     }
     else 
         titleName = groupName;
@@ -100,6 +107,21 @@ async function PostGroup(name) {
     return res;
 }
 
+async function GetAllGroupNameThroughHub() {
+    let res;
+    var settings = {
+        "url": "https://localhost:7069/api/Group/GetThroughHub",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    };
+    await $.ajax(settings).done(function (response) {
+        res = response;
+    });
+    return res;
+}
 
 function HandleGroupName(nameGroup, name){
     var arr = nameGroup.split(':');
@@ -169,7 +191,19 @@ async function GetImageOfGroupByID(id){
     });
     return res;
 }
+async function GetAllGroup() {
+    var res;
+    var settings = {
+        "url": "https://localhost:7069/api/Group/",
+        "method": "GET",
+        "timeout": 0,
+    };
 
+    await $.ajax(settings).done(function (response) {
+        res = response;
+    });
+    return res;
+}
 async function CheckExistGroup(nameGroup){
     var res;
     var settings = {

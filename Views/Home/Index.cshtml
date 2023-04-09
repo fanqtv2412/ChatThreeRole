@@ -75,6 +75,9 @@
                     </div>
                 </div>
             </div>
+            <a asp-action="Index" asp-controller="Manage" asp-route-email='@ViewBag.Email' id="ManageAccount">
+                ManageAccount
+            </a>
             <a asp-action="Logout" asp-controller="Home" asp-route-email='@ViewBag.Email' id="logout">
                 Logout
             </a>
@@ -155,29 +158,49 @@
     var constGroupName;
     var constGroupID;
     var constEmail = "";
+    var defaultImgSrc = "http://127.0.0.1:11111/wwwroot/images/avatarEmpty.webp";
     const connection = new signalR.HubConnectionBuilder().withUrl("/ChatHub").withAutomaticReconnect([0, 1000, 5000, null]).build();
     connection.start().then(() => {
         connection.invoke("SendToServer");
         connection.invoke("SendStatus", '@ViewBag.Name');
     });
+    connection.on("NewGroupCreated", async function (groupName, hostConectionID){
+        if (groupName.includes(":") && hostConectionID.trim() != connection.connectionId.trim()) {
+            var tempEmail = groupName.split(":");
+            var allGroupsName = await GetAllGroupNameThroughHub();
+            console.log(allGroupsName);
+            if ('@ViewBag.Email' == tempEmail[0] || '@ViewBag.Email' == tempEmail[1]){
+                connection.invoke("AddToGroup", groupName, '@ViewBag.Email');
+                allGroupsName = await GetAllGroupNameThroughHub();
+                console.log(allGroupsName);
 
+            }
+        }
+    });
     connection.on("RecvFromGroup", async function (groupname, message, groupID) {
         var arr = message.split(':');
-        
+        console.log(message);
         if ('@ViewBag.Email' != arr[0]) {
             var tempDiv = document.getElementById(groupID);
-            var tempImg = tempDiv.getElementsByTagName('img')[0].src;
+            var tempImg = "";
+            var tempImgSrc = defaultImgSrc;
+            if (tempDiv != null){
+                if (tempDiv.getElementsByTagName("img") !== 0) {
+                    tempImgSrc = defaultImgSrc;
+                }
+                else tempImgSrc = tempDiv.getElementsByTagName("img")[0].src;
+                document.getElementById(groupID.toString()).remove();
+            }
             console.log(tempImg);
-            document.getElementById(groupID).remove();
+            const timeNow = Date.now();
+            var div = await CreateGroup(groupname, groupID, tempImgSrc, message, timeNow, '@ViewBag.Email');
+
+            var body = document.getElementById("selectListGroup");
+            body.insertBefore(div, body.firstChild);
             if(groupIDSelected == groupID){
                 var li = await DisplayMessageReceiver(message);
                 document.getElementById("listMessageGroup").appendChild(li);
             }
-            const timeNow = Date.now();
-            var div = await CreateGroup(groupname, groupID, tempImg, message, timeNow, '@ViewBag.Email');
-
-            var body = document.getElementById("selectListGroup");
-            body.insertBefore(div, body.firstChild);
         }
     });
 
@@ -199,18 +222,27 @@
         }
     });
     $(document).ready(async function () {
+        var allGroup = await GetAllGroup();
+        await allGroup.forEach(elem => {
+            if (elem.groupName.includes(":")){
+                let tempEmail = elem.groupName.split(":");
+                    if ('@ViewBag.Email' == tempEmail[0] || '@ViewBag.Email' == tempEmail[1]) {
+                        AddGroupToAccount(elem.id, '@ViewBag.Email')
+                } 
+
+            }
+        });
         var arrGroup = await GetAllGroupRegistered('@ViewBag.Email');
         var body = document.getElementById("selectListGroup");
         var arrMsg = new Array();
         arrGroup.groups.forEach(elem =>{
-            connection.invoke("AddToGroup", elem.groupName, '@ViewBag.Email' );
+            connection.invoke("AddToGroup", elem.groupName, '@ViewBag.Email');
         });
         arrMsg = await GetAllLastMessage(arrGroup.groups);
         arrMsg.sort(function (a, b) {
                 return (a.dateOfMsg > b.dateOfMsg) ? -1 : ((a.dateOfMsg < b.dateOfMsg) ? 1 : 0);
             });
             for (const item of arrMsg) {
-                console.log(item.messsage)
                 if(item.messsage){
                     var div = await CreateGroup(await GetGroupNameByID(item.groupID), item.groupID, await GetImageOfGroupByID(item.groupID), item.messsage, item.dateOfMsg, '@ViewBag.Email');
                     listDivGroup.push(div);
@@ -232,6 +264,10 @@
         console.log(groupName + groupID);
         constGroupID = groupID;
         constGroupName = groupName;
+        //if(constGroupName.includes(":")){
+                //connection.invoke("AddToGroup", groupName, constGroupName[0]);
+                //connection.invoke("AddToGroup", groupName, constGroupName[1]);
+        //}
         document.getElementById('avatarListChat').src = avatar;
         document.getElementById("groupNameTitle").innerHTML = title;
         GroupIDSelected(groupID);
@@ -244,21 +280,19 @@
     }
 
     async function SelectTempGroup(nameAccount ,id , src, email, myEmail ){
+        console.log("my email: " + myEmail + "your email: " + email);
         document.getElementsByClassName("GroupOnline")
         RemoveDivNullId();
         var tempGroup;
         var div;
         var check = await CheckExistGroup(email.trim() + ":" + myEmail.trim()) != null? await CheckExistGroup(email.trim() + ":" + myEmail.trim()) : await CheckExistGroup(myEmail.trim() + ":" + email.trim());
         if(check != null ){
-            console.log(1);
             tempGroup = check;
             var header = document.getElementById('titleOfGroup');
             header.style.display = 'flex';
             if(document.getElementById(tempGroup.id))
                 SelectGroup(tempGroup.groupName, nameAccount, tempGroup.id, src);
             else{
-                connection.invoke("AddToGroup", tempGroup.groupName, myEmail);
-                connection.invoke("AddToGroup", tempGroup.groupName, email);
                 div = await CreateGroup(tempGroup.groupName, tempGroup.id, await GetImgByEmail(email), "Start new conversation", null, myEmail);
                 var selectList = document.getElementById('selectListGroup');
                 selectList.insertBefore(div, selectList.firstChild);
@@ -267,15 +301,15 @@
         }
         else{
             console.log(2);
-            div            = await CreateGroup( myEmail.trim() + ":" + email.trim(), null, await GetImgByEmail(email), "Start new conversation", null, myEmail );
+            div            = await CreateGroup(myEmail.trim() + ":" + email.trim(), null, await GetImgByEmail(email), "Start new conversation", null, myEmail );
             div.onclick    = null;
-            tempGroup      = await PostGroup( myEmail.trim() + ":" + email.trim());
-            connection.invoke("AddToGroup", tempGroup.groupName, myEmail);
-            connection.invoke("AddToGroup", tempGroup.groupName, email);
+            tempGroup      = await PostGroup(myEmail.trim() + ":" + email.trim());
             constGroupName = tempGroup.groupName;
+            connection.invoke("CreateGroup", constGroupName.trim());
             constGroupID   = tempGroup.id;
             var selectList = document.getElementById('selectListGroup');
-            if(await AddGroupToAccount(tempGroup.id, myEmail) == 200) console.log("registered");
+            await AddGroupToAccount(tempGroup.id, myEmail);
+            await AddGroupToAccount(tempGroup.id, email);
             SelectGroup(tempGroup.groupName, nameAccount, tempGroup.id, src);
             selectList.insertBefore(div, selectList.firstChild);
         }
