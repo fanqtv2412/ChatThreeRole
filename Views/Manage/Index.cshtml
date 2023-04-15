@@ -2,18 +2,28 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var avatarNull = "avatarEmpty.webp";
+    var defaultSrc = "http://127.0.0.1:11111/wwwroot/images/";
+    var avatar = Model.Avatar;
+    var srcImage = defaultSrc + avatarNull;
+    if (!String.IsNullOrEmpty(avatar))
+        srcImage = defaultSrc + avatar;
 }
+@model AccountModel
+
+
 <head>
     <link rel="stylesheet" type="text/css" href="http://127.0.0.1:11111/wwwroot/css/manage.css">
 </head>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
+    <h2>@Model.FullName</h2>
     <div class="view-account">
         <section class="module">
             <div class="module-inner">
                 <div class="side-bar">
                     <div class="user-info">
-                        <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                        <img class="img-profile img-circle img-responsive center-block" src=@srcImage alt="img" id="imagetemp">
                         <ul class="meta list list-unstyled">
                             <li class="name">
                                 Rebecca Sanders
@@ -37,66 +47,44 @@
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2>
-                    <form class="form-horizontal">
+                    
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data" asp-controller="Manage" asp-action="UpdateProfile">
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
                             <div class="form-group avatar">
                                 <figure class="figure col-md-2 col-sm-3 col-xs-12">
-                                    <img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                    <img class="img-rounded img-responsive" src=@srcImage alt="">
                                 </figure>
                                 <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                                    <input type="file" class="file-uploader pull-left">
-                                    <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
+                                    <input type="file" class="file-uploader pull-left" name="fileUpload" id="fileUpload">
                                 </div>
                             </div>
+                            <br>
                             <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
+                                    <input type="text" class="form-control" value="@Model.Email" name="txtEmail" readonly="readonly">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
+                                    <input type="text" class="form-control" value="@Model.FullName" name ="txtFullName">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Sanders">
+                                    <input type="text" class="form-control" name ="txtPassword">
                                 </div>
                             </div>
-                        </fieldset>
-                        <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Contact Info</h3>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="email" class="form-control" value="Rebecca@website.com">
-                                    <p class="help-block">This is the email </p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Twitter</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="SpeedyBecky">
-                                    <p class="help-block">Your twitter username</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Linkedin</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="url" class="form-control" value="https://www.linkedin.com/in/lorem">
-                                    <p class="help-block">eg. https://www.linkedin.com/in/yourname</p>
-                                </div>
-                            </div>
+                            
                         </fieldset>
                         <hr>
                         <div class="form-group">
                             <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                <input class="btn btn-primary" type="submit" value="Update Profile">
+                                <input class="btn btn-primary" type="submit" value="Submit">
                             </div>
                         </div>
                     </form>
