@@ -1,6 +1,6 @@
 .mainUL {
     height: 300px; 
-    width: 350; 
+    width: 350px; 
     border: 1px; 
     border-style: solid; 
     list-style-type: none; 
@@ -11,7 +11,7 @@
 .listMessage{
     margin-right:10px ;
     height: 300px; 
-    width: 350px; 
+    width: 85%; 
     border: 1px; 
     border-style: solid; 
     list-style-type: none; 
@@ -37,7 +37,7 @@
     background-color: white;
 }
 .GroupOnline:hover{
-    background-color: #DCDCDC;
+    background-color: #eaf3ff;
     border-radius: 15px;
 }
 li span{
@@ -76,11 +76,6 @@ li{
     overflow: scroll;
     border-bottom: none;
 }
-#NameLog{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
 #Logout:hover{
     background-color: black;
     color: whitesmoke;
@@ -90,7 +85,6 @@ ul {
     list-style-type: none;
 }
 #Left{
-    height: 410px;
     width: 25%;
     border: 1px;
     border-style: solid;
@@ -104,7 +98,6 @@ ul {
 }
 .container{
     width: 100%;
-    max-width: 1600px;
 }
 #ChatClient{
     width: 350px;
@@ -251,3 +244,85 @@ ul {
 input:focus{
     outline: none;
 }
+
+.wrapper {
+    position: relative;
+    /* ??t ?? cao ?? có th? hi?n th? h?p l?a ch?n ??y ?? */
+    height: 100vh;
+}
+
+#select-box {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+    /* Thêm các thu?c tính khác ?? t?o ki?u cho h?p l?a ch?n */
+}
+
+
+body > .container{
+    max-width: none !important;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.container > main{
+    flex-grow: 1;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .container > main > #main-container {
+        flex-grow: 1;
+    }
+
+    footer{
+        position: none;
+    }
+
+    body{
+        height: 100vh;
+        display: flex;
+        margin:0;
+    }
+footer {
+    position: relative !important;
+    bottom: 0;
+    width: 100%; 
+    white-space: nowrap; 
+    line-height: normal;
+}
+
+#NameLog{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+    margin-bottom: 10px;
+}
+
+#Left{
+    padding: 10px;
+}
+
+#selectListGroup div{
+    height: fit-content;
+}
+
+    #selectListGroup button {
+        align-items: center;
+        padding: 10px;
+    }
+
+    #selectListGroup button img{
+        width: 50px !important;
+        height: 50px !important;
+        margin-right: 10px;
+    }
+
+    #selectListGroup button span {
+        margin: 0 !important;
+    }

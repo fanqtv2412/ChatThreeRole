@@ -132,7 +132,8 @@ public class HomeController : Controller
         ViewBag.Name = name;
         ViewBag.Email = email;
         var user = _context.Account.Find(email);
-        ViewBag.Avatar = user.Avatar;
+        if(user != null )
+            ViewBag.Avatar = user.Avatar;
         return View();
     }
 

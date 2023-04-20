@@ -178,10 +178,10 @@ async function CreateTempGroup(nameAccount, id, avatar, email,  myEmail){
     return div;
 }
 
-async function GetImageOfGroupByID(id){
+async function GetImageOfGroupByID(id, email){
     var res;
     var settings = {
-        "url"    : "https://localhost:7069/api/Group/GetImage?id=" + id,
+        "url": "https://localhost:7069/api/Group/GetImage?id=" + id + "&email="+ email,
         "method" : "GET",
         "timeout": 0,
       };

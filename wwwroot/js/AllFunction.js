@@ -119,16 +119,35 @@ async function handleScrollMessage(id, name) {
 }
 
 function ClickSearchUserByEmail(myEmail) {
+    var divInsert = document.createElement('div');
+    divInsert.style.display = "inline-block";
+    var label = document.createElement('label');
+    label.textContent = "To: ";
+    label.style.marginRight = "5px";
     var input = document.createElement('input');
     document.getElementById('titleOfGroup').style.display = "none";
     var chatGroup = document.getElementById('ChatGroup');
     input.placeholder = "Enter name user";
+    input.style.border = "none"
     input.id = "inputSearchUserByEmail";
-    input.setAttribute('onchange', 'CaptureSearchUserByEmail(event, " ' + myEmail + ' ")');
-    chatGroup.insertBefore(input, chatGroup.firstChild);
+    //input.setAttribute('onchange', 'CaptureSearchUserByEmail(event, " ' + myEmail + ' ")');
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            CaptureSearchUserByEmail(event, myEmail);
+        }
+    });
+    divInsert.appendChild(label);
+    divInsert.appendChild(input);
+    chatGroup.insertBefore(divInsert, chatGroup.firstChild);
 }
 
 async function CaptureSearchUserByEmail(event, email) {
+    var body = document.getElementById("ChatGroup");
+    var tempBody =  document.getElementById("tempBody")
+    if (tempBody) {
+        body.removeChild(tempBody);
+    }
     var arrAccount = await GetAllAcc();
     console.log(arrAccount);
     var PATTERN = event.target.value;
@@ -140,9 +159,16 @@ async function CaptureSearchUserByEmail(event, email) {
 
     for (let i = 0; i < arrName.length; i++) {
         var div = await CreateTempGroup(arrName[i].fullName, arrName[i].email, arrName[i].avatar, arrName[i].email, email);
+        div.style.marginTop = "5px";
+        tempBody.style.overflowY = "scroll";
         tempBody.append(div);
     }
-    var body = document.getElementById("ChatGroup");
+    body.style.position = "relative";
+    /*for (var i = body.children.length; i >= 2; i--) {
+        body.removeChild(body.children[i]-1);
+    }
+    body.removeChild("")*/
+    tempBody.style.position = "absolute";
     body.insertBefore(tempBody, body.children[2]);
 }
 

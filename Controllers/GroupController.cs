@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using ChatThreeRole.Hubs;
 using ChatThreeRole.Models;
@@ -35,10 +36,11 @@ public class GroupController: ControllerBase{
     public string GetNameByID([FromQuery]int id){
         return _service.GetNameGroupByID(id);
     }
-    
+
     [HttpGet("GetImage")]
-    public string GetImageOfGroup([FromQuery] int id){
-        return _service.GetImageOfGroup(id);
+    public string GetImageOfGroup([FromQuery] int id,string email = null)
+    {
+        return _service.GetImageOfGroup(id, email);
     }
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)

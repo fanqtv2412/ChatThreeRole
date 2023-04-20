@@ -1,6 +1,12 @@
 ﻿@model ChatThreeRole.Models.GroupModel;
 @{
     ViewData["Title"] = "Home Page";
+    var defaultPathImg = "http://127.0.0.1:11111/wwwroot/images/";
+    var srcImageNull = "avatarEmpty.webp";
+    var srcImageFromAccount = ViewBag.Avatar;
+    var srcImage = "";
+    if (String.IsNullOrEmpty(srcImageFromAccount)) srcImage = defaultPathImg + srcImageNull;
+    else srcImage = defaultPathImg + srcImageFromAccount;
 }
 
 <head>
@@ -16,10 +22,8 @@
     <script type="text/javascript" src="http://127.0.0.1:11111/wwwroot/js/AccountFunction.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://127.0.0.1:11111/wwwroot/css/index.css">
-    </link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <div id="NameLog">
@@ -37,11 +41,12 @@
     </div>
     <div class="dropdown" style="float:right;">
         <button id="profile" class="dropbtn"><img id="avatar"
-                src="http://127.0.0.1:11111/wwwroot/images/avatarEmpty.webp" alt="Avatar"></button>
+                 src=@srcImage alt="Avatar">
+        </button>
         <div class="dropdown-content">
             <div class="information">
                 <img style="width: 50px;height:50px; margin-left:12px; border-radius:50%"
-                    src="http://127.0.0.1:11111/wwwroot/images/avatarEmpty.webp" alt="Avatar">
+                     src=@srcImage alt="Avatar">
                 <div style="margin-left: 10px;">
                     <b>@ViewBag.Name</b>
                     <p>@ViewBag.Email</p>
@@ -90,14 +95,17 @@
             <div>
                 <h5>Chat </h5>
             </div>
-            <div style="display: flex; justify-content:space-between;width:45%">
+            <div style="display: flex; justify-content:space-between;width:45%" >
                 <div>
-                    <button class="icon">
+                    <button class="icon" id="more-action">
                         <i class="fas fa-ellipsis-h" style="margin-top: 7px;"></i>
+                        <div id="select-box">
+                            <p> tạo mới group</p>
+                        </div>
                     </button>
                 </div>
                 <div>
-                    <button class="icon">
+                    <button class="icon" >
                         <i class="fab fa-youtube" style="margin-top: 7px;"></i>
                     </button>
                 </div>
@@ -116,9 +124,9 @@
         </div>
     </div>
     <div id="ChatGroup">
-        <div id="titleOfGroup">
+        <div id="titleOfGroup" style="display: none;">
             <div style="display: flex; justify-content:space-between">
-                <img class="image" id = "avatarListChat" src="http://127.0.0.1:11111/wwwroot/images/avatarEmpty.webp" alt="Avatar">
+                <img class="image" id="avatarListChat" src="http://127.0.0.1:11111/wwwroot/images/avatarEmpty.webp" alt="Avatar" >
                 <h5 id="groupNameTitle"> </h5>
             </div>
             <div style="margin-right: 10px;">
@@ -127,8 +135,9 @@
             </div>
         </div>
         <ul id="listMessageGroup" class="mainUL" style="padding-right: 10px; margin-left:0px;">
+            <li> Hãy chọn một đoạn chat để bắt đầu<li/>
         </ul>
-        <div style="display: flex; justify-content:space-between; margin-top:25px;">
+        <div id="bottomOfGroup" style="display: flex; justify-content:space-between; margin-top:25px;">
             <i class='fas fa-plus-circle' style="color: rgb(30, 144, 255); font-size:20px;"></i>
             <i class='fas fa-image' style="color: rgb(30, 144, 255); font-size:20px;"></i>
             <input id="messageToGroup" onchange="FunctionSend(event)">
@@ -137,7 +146,7 @@
         </div>
     </div>
     <div id="WrapperAccountOnline">
-        <img src="http://127.0.0.1:11111/wwwroot/images/avatarEmpty.webp" alt="Avatar"
+        <img src=@srcImage alt="Avatar"
             style="width: 60px; height:60px;border-radius:50%;margin-top:15px;">
         <h5 id="groupNameInfor"></h5>
         <div id="FixInformation">
@@ -193,7 +202,7 @@
             }
             console.log(tempImg);
             const timeNow = Date.now();
-            var div = await CreateGroup(groupname, groupID, tempImgSrc, message, timeNow, '@ViewBag.Email');
+                var div = await CreateGroup(groupname, groupID, await GetImageOfGroupByID(groupID, '@ViewBag.Email'), message, timeNow, '@ViewBag.Email');
 
             var body = document.getElementById("selectListGroup");
             body.insertBefore(div, body.firstChild);
@@ -222,6 +231,22 @@
         }
     });
     $(document).ready(async function () {
+        const selectBox = document.getElementById('select-box');
+        const btn = document.getElementById('more-action');
+
+        // Hiển thị hộp lựa chọn khi ấn nút
+        btn.addEventListener('click', () => {
+            selectBox.style.display = 'block';
+        });
+
+        // Ẩn hộp lựa chọn khi click ra ngoài
+        document.addEventListener('click', (event) => {
+            const isClickInside = selectBox.contains(event.target) || btn.contains(event.target);
+            if (!isClickInside) {
+                selectBox.style.display = 'none';
+            }
+        });
+
         var allGroup = await GetAllGroup();
         await allGroup.forEach(elem => {
             if (elem.groupName.includes(":")){
@@ -244,7 +269,7 @@
             });
             for (const item of arrMsg) {
                 if(item.messsage){
-                    var div = await CreateGroup(await GetGroupNameByID(item.groupID), item.groupID, await GetImageOfGroupByID(item.groupID), item.messsage, item.dateOfMsg, '@ViewBag.Email');
+                    var div = await CreateGroup(await GetGroupNameByID(item.groupID), item.groupID, await GetImageOfGroupByID(item.groupID, '@ViewBag.Email'), item.messsage, item.dateOfMsg, '@ViewBag.Email');
                     listDivGroup.push(div);
                     body.append(div);
                 }
@@ -256,6 +281,12 @@
     });
 
     async function SelectGroup(groupName,title, groupID, avatar = null) {
+        if (document.getElementById("titleOfGroup").style.display  === 'none') {
+            document.getElementById("titleOfGroup").style.display === 'flex'
+        }
+        /*if (document.getElementById("bottomOfGroup").style.display === 'none') {
+            document.getElementById("bottomOfGroup").style.display === 'flex'
+        }*/
         RemoveDivNullId();
         RemoveAllTempSelect();
         if(document.getElementById('inputSearchUserByEmail'))
