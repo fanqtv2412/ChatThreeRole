@@ -135,12 +135,12 @@
             </div>
         </div>
         <ul id="listMessageGroup" class="mainUL" style="padding-right: 10px; margin-left:0px;">
-            <li> Hãy chọn một đoạn chat để bắt đầu<li/>
+            <p> Hãy chọn một đoạn chat để bắt đầu</p>
         </ul>
-        <div id="bottomOfGroup" style="display: flex; justify-content:space-between; margin-top:25px;">
+        <div id="bottomOfGroup">
             <i class='fas fa-plus-circle' style="color: rgb(30, 144, 255); font-size:20px;"></i>
             <i class='fas fa-image' style="color: rgb(30, 144, 255); font-size:20px;"></i>
-            <input id="messageToGroup" onchange="FunctionSend(event)">
+            <input type="text" id="messageToGroup" onchange="FunctionSend(event)">
             <input class="material-icons" style="color:dodgerblue; border-style:none; background-color: white;" type="submit" placeholder="Aa" value="&#xe163;" id="sendMessageToGroup"
                 onclick="SendMessageToGroupFunc(constGroupName, '@ViewBag.Name', constGroupID, '@ViewBag.Email')">
         </div>
@@ -150,13 +150,27 @@
             style="width: 60px; height:60px;border-radius:50%;margin-top:15px;">
         <h5 id="groupNameInfor"></h5>
         <div id="FixInformation">
-            <button class="MenuInfor">Tuỳ chỉnh đoạn chat <i class='fas fa-angle-down'
-                    style="margin-top:5px;"></i></button>
-            <button class="MenuInfor">Tuỳ chọn nhóm <i class='fas fa-angle-down' style="margin-top:5px;"></i></button>
-            <button class="MenuInfor">File phương tiện và liên kết <i class='fas fa-angle-down'
-                    style="margin-top:5px;"></i></button>
-            <button class="MenuInfor">Quyền riêng tư và hỗ trợ <i class='fas fa-angle-down'
-                    style="margin-top:5px;"></i></button>
+            <button class="MenuInfor">
+                <p onclick="showMenuItems(this)">
+                    Tuỳ chỉnh đoạn chat <i class='fas fa-angle-down'
+                                           style="margin-top:5px;"></i>
+                </p>
+                <div class="children">
+                    <div class="child">Tùy chỉnh 1</div>
+                    <div class="child">Tùy chỉnh 2</div>
+                </div>
+            </button>
+
+            <button class="MenuInfor">
+                <p onclick="showMenuItems(this)">
+                    Tìm kiếm trong đoạn chat <i class='fas fa-angle-down'
+                                           style="margin-top:5px;"></i>
+                </p>
+                <div class="children">
+                    <div class="child">Tùy chỉnh 1</div>
+                    <div class="child">Tùy chỉnh 2</div>
+                </div>
+            </button>
         </div>
     </div>
 </div>
@@ -280,13 +294,16 @@
         }
     });
 
-    async function SelectGroup(groupName,title, groupID, avatar = null) {
+    async function SelectGroup(groupName, title, groupID, avatar = null) {
         if (document.getElementById("titleOfGroup").style.display  === 'none') {
-            document.getElementById("titleOfGroup").style.display === 'flex'
+            document.getElementById("titleOfGroup").style.display = 'flex'
         }
-        /*if (document.getElementById("bottomOfGroup").style.display === 'none') {
-            document.getElementById("bottomOfGroup").style.display === 'flex'
-        }*/
+        if (document.getElementById("bottomOfGroup").style.display === 'none') {
+            document.getElementById("bottomOfGroup").style.display = 'flex'
+        }
+
+        document.getElementById("WrapperAccountOnline").style.display = 'block'
+        console.log(document.getElementById("WrapperAccountOnline").style.display)
         RemoveDivNullId();
         RemoveAllTempSelect();
         if(document.getElementById('inputSearchUserByEmail'))
@@ -308,9 +325,10 @@
         SetPositionScrollBar('#listMessageGroup');
         document.getElementById("groupNameInfor").innerText = title;
         document.getElementById('titleOfGroup').style.display = 'flex';
+        document.getElementById("bottomOfGroup").style.display === 'flex'
     }
 
-    async function SelectTempGroup(nameAccount ,id , src, email, myEmail ){
+    async function SelectTempGroup(nameAccount, id, src, email, myEmail) {
         console.log("my email: " + myEmail + "your email: " + email);
         document.getElementsByClassName("GroupOnline")
         RemoveDivNullId();
@@ -320,6 +338,7 @@
         if(check != null ){
             tempGroup = check;
             var header = document.getElementById('titleOfGroup');
+            document.getElementById("bottomOfGroup").style.display === 'flex'
             header.style.display = 'flex';
             if(document.getElementById(tempGroup.id))
                 SelectGroup(tempGroup.groupName, nameAccount, tempGroup.id, src);
@@ -412,6 +431,10 @@
     var groupIDSelected = 0;
     function GroupIDSelected(id){
         groupIDSelected = id;
+    }
+
+    const showMenuItems = (e) => {
+        e.parentElement.getElementsByClassName('children')[0].style.display = "block";
     }
 </script>
 }

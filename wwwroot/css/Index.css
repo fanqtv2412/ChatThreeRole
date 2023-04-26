@@ -1,328 +1,481 @@
-.mainUL {
-    height: 300px; 
-    width: 350px; 
-    border: 1px; 
-    border-style: solid; 
-    list-style-type: none; 
-    padding-left:10px; 
-    padding-top:5px;
-    margin-left: 10px;
+.listMessage {
+  margin-right: 10px;
+  height: 300px;
+  width: 85%;
+  border: 1px;
+  border-style: solid;
+  list-style-type: none;
+  padding-left: 10px;
+  padding-top: 5px;
+  overflow: scroll;
+  border-bottom: none;
 }
-.listMessage{
-    margin-right:10px ;
-    height: 300px; 
-    width: 85%; 
-    border: 1px; 
-    border-style: solid; 
-    list-style-type: none; 
-    padding-left:10px; 
-    padding-top:5px;
-    overflow: scroll;
-    border-bottom: none;
+#main-container {
+  height: 70%;
+  display: flex;
+  justify-content: space-between;
 }
-#main-container{
-    height: 70%;
-    display: flex;
-    justify-content: space-between;
+.accOnline {
+  width: 150px;
+  text-align: center;
+  border: none;
+  background-color: #dcdcdc;
 }
-.accOnline{
-    width: 150px;
-    text-align: center;
-    border: none;
-    background-color: #DCDCDC;
+.GroupOnline {
+  text-align: initial;
+  border: none;
+  background-color: white;
 }
-.GroupOnline{
-    text-align: initial;
-    border: none;
-    background-color: white;
+.GroupOnline:hover {
+  background-color: #eaf3ff;
+  border-radius: 15px;
 }
-.GroupOnline:hover{
-    background-color: #eaf3ff;
-    border-radius: 15px;
+li span {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
-li span{
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+li p {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-bottom: 0px;
 }
-li p{
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    margin-bottom: 0px;
+li {
+  margin-top: 5px;
 }
-li{
-    margin-top: 5px;
-
+#containerList {
+  margin-right: 0px;
+  padding-right: 0px;
+  width: 10%;
 }
-#containerList{
-    margin-right: 0px;
-    padding-right: 0px;
-    width: 10%;
+#WrapperAccountOnline {
+  border: 1px;
+  border-style: solid;
+  border-color: gainsboro;
+  border-left: none;
+  text-align: center;
+  width: 25%;
 }
-#WrapperAccountOnline{
-    border: 1px;
-    border-style: solid;
-    border-color: gainsboro;
-    border-left: none;
-    text-align: center;
-    width: 25%;
+#listMessageClient {
+  padding-right: 10px;
+  margin-right: 50px;
+  overflow: scroll;
+  border-bottom: none;
 }
-#listMessageClient{
-    padding-right: 10px;
-    margin-right: 50px;
-    overflow: scroll;
-    border-bottom: none;
-}
-#Logout:hover{
-    background-color: black;
-    color: whitesmoke;
-    border-radius: 10px;
+#Logout:hover {
+  background-color: black;
+  color: whitesmoke;
+  border-radius: 10px;
 }
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
-#Left{
-    width: 25%;
-    border: 1px;
-    border-style: solid;
-    border-color: #cdcbcb;
-    padding: 5px;
-    overflow: auto;
-    border-right: none;
+#Left {
+  width: 25%;
+  border: 1px;
+  border-style: solid;
+  border-color: #cdcbcb;
+  padding: 5px;
+  border-right: none;
 }
-#hideListGroup :hover{
-    background-color: rgb(189, 189, 189);
+#hideListGroup :hover {
+  background-color: rgb(189, 189, 189);
 }
-.container{
-    width: 100%;
+.container {
+  width: 100%;
 }
-#ChatClient{
-    width: 350px;
-    margin-right: 10px;
+#ChatClient {
+  width: 350px;
+  margin-right: 10px;
 }
-#ChatGroup{
-    padding: 10px;
-    width: 50%;
-    border: 1px;
-    border-style: solid;
-    border-color: #cdcbcb;
-    padding-right: 0px;
+#ChatGroup {
+  width: 50%;
+  border: 1px;
+  border-style: solid;
+  border-color: #cdcbcb;
+  padding-right: 0px;
 }
-#sendMessageToGroup{
-    border-radius: 10px;
+#sendMessageToGroup {
+  border-radius: 10px;
 }
-#messageToGroup{
-    border-radius: 10px;
-    border: none;
-    background-color: #ebebeb;
-    width: 82%;
+#messageToGroup {
+  border-radius: 10px;
+  border: none;
+  background-color: #ebebeb;
+  width: 82%;
 }
-#listMessageGroup{
-    overflow: auto;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    border-color: #ebebeb;
+#listMessageGroup {
+  overflow: auto;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-color: #ebebeb;
 }
-#titleOfGroup{
-    display: flex;
-    justify-content: space-between;
+#titleOfGroup {
+  display: flex;
+  justify-content: space-between;
 }
 
-#titleOfLeft{
-    display: flex;
-    justify-content: space-between;
+#titleOfLeft {
+  display: flex;
+  justify-content: space-between;
 }
-.icon{
-    text-align: center;
-    background-color: #ebebeb;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    border: none;
-
+.icon {
+  text-align: center;
+  background-color: #ebebeb;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: none;
 }
-#searchConversation{
-    width: 95%;
-    border-radius: 50px;
-    border-style:none ;
-    background-color: #ebebeb;
+#searchConversation {
+  width: 95%;
+  border-radius: 50px;
+  border-style: none;
+  background-color: #ebebeb;
 }
-#groupNameTitle{
-    margin-top: 5px;
-    margin-left: 5px;
+#groupNameTitle {
+  margin-top: 5px;
+  margin-left: 5px;
 }
-#avatar{
-    border-radius: 50%;
-    height:40px;
-    width: 40px;
+#avatar {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
 }
-.image{
-    border-radius: 50%;
-    height:35px; 
-    width: 35px;
-    margin-bottom: 5px;
+.image {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  margin-bottom: 5px;
 }
-#profile{
-    border-radius: 50%; 
-    border:none;
-    size: 35px;
-    padding: inherit;
+#profile {
+  border-radius: 50%;
+  border: none;
+  size: 35px;
+  padding: inherit;
 }
 
 .dropbtn {
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
-  
+
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
-  
+
 .dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    padding-top: 10px;
-    background-color: #f9f9f9;
-    min-width: 300px;
-    box-shadow: 10px 8px 16px 10px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-  
-.dropdown-content a{
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-  
-.dropdown-content a:hover {background-color: #f1f1f1;}
-.dropdown:hover .dropdown-content {display: block;}
-
-#manageAccount{
-    text-align: left;
-    width: 100%;
-    border: none;
+  display: none;
+  position: absolute;
+  right: 0;
+  padding-top: 10px;
+  background-color: #f9f9f9;
+  min-width: 300px;
+  box-shadow: 10px 8px 16px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
-#manageAccount:hover{
-    background-color: #f1f1f1;
-}
-#logout{
-    width: 100%;
-    border: none;
-}
-.information{
-    display: flex;
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.MenuInfor{
-    text-align: left;
-    margin-left: 20px;
-    height: 35px;
-    font-size: 18px;
-    border: none;
-    width: 85%;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-.MenuInfor:hover{
-    background-color: #DCDCDC;
-    border-radius: 15px;
+#manageAccount {
+  text-align: left;
+  width: 100%;
+  border: none;
 }
 
-input:focus{
-    outline: none;
+#manageAccount:hover {
+  background-color: #f1f1f1;
+}
+#logout {
+  width: 100%;
+  border: none;
+}
+.information {
+  display: flex;
+}
+
+input:focus {
+  outline: none;
 }
 
 .wrapper {
-    position: relative;
-    /* ??t ?? cao ?? có th? hi?n th? h?p l?a ch?n ??y ?? */
-    height: 100vh;
+  position: relative;
+  /* ??t ?? cao ?? cï¿½ th? hi?n th? h?p l?a ch?n ??y ?? */
+  height: 100vh;
 }
 
 #select-box {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background-color: white;
-    /* Thêm các thu?c tính khác ?? t?o ki?u cho h?p l?a ch?n */
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  /* Thï¿½m cï¿½c thu?c tï¿½nh khï¿½c ?? t?o ki?u cho h?p l?a ch?n */
 }
 
-
-body > .container{
-    max-width: none !important;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+body > .container {
+  max-width: none !important;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
-.container > main{
-    flex-grow: 1;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
+.container > main {
+  flex-grow: 1;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
 }
 
-    .container > main > #main-container {
-        flex-grow: 1;
-    }
+.container > main > #main-container {
+  flex-grow: 1;
+}
 
-    footer{
-        position: none;
-    }
-
-    body{
-        height: 100vh;
-        display: flex;
-        margin:0;
-    }
 footer {
-    position: relative !important;
-    bottom: 0;
-    width: 100%; 
-    white-space: nowrap; 
-    line-height: normal;
+  position: none;
 }
 
-#NameLog{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 100px;
-    margin-bottom: 10px;
+body {
+  height: 100vh;
+  display: flex;
+  margin: 0;
+}
+footer {
+  position: relative !important;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: normal;
 }
 
-#Left{
-    padding: 10px;
+#NameLog {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 100px;
+  margin-bottom: 10px;
 }
 
-#selectListGroup div{
-    height: fit-content;
+#Left {
+  padding: 10px;
 }
 
-    #selectListGroup button {
-        align-items: center;
-        padding: 10px;
-    }
+#selectListGroup div {
+  height: fit-content;
+}
 
-    #selectListGroup button img{
-        width: 50px !important;
-        height: 50px !important;
-        margin-right: 10px;
-    }
+#selectListGroup button {
+  align-items: center;
+  padding: 10px;
+}
 
-    #selectListGroup button span {
-        margin: 0 !important;
-    }
+#selectListGroup button img {
+  width: 50px !important;
+  height: 50px !important;
+  margin-right: 10px;
+}
+
+#selectListGroup button span {
+  margin: 0 !important;
+}
+
+#listMessageGroup.mainUL {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+#bottomOfGroup {
+  margin: 0 !important;
+}
+
+#ChatGroup {
+  padding: 5px !important;
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+}
+
+#ChatGroup > * {
+  padding: 5px !important;
+}
+
+#bottomOfGroup {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+input {
+  padding: 5px 20px;
+  border-radius: 50px !important;
+  background-color: #f0f2f5 !important;
+}
+
+#bottomOfGroup input {
+  flex-grow: 1;
+}
+
+#bottomOfGroup input[type="submit"] {
+  padding: 0;
+  background-color: transparent !important;
+}
+.container {
+  padding: 0;
+}
+
+#listMessageGroup .li {
+  display: block !important;
+}
+
+#listMessageGroup {
+  display: flex;
+  flex-direction: column !important;
+}
+
+#ChatGroup ul {
+  flex-grow: 1;
+  padding: 10px;
+  overflow: auto;
+}
+
+#ChatGroup ul:has(li) {
+  align-items: start;
+  justify-content: start;
+}
+
+#FixInformation {
+  margin-top: 25px;
+}
+
+#FixInformation button {
+  display: flex;
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 5px 10px;
+  flex-direction: column;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+#FixInformation button > * {
+  width: 100%;
+  text-align: left;
+}
+
+#FixInformation button > p {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0;
+}
+
+#FixInformation button > p:hover {
+  background-color: #f0f2f5;
+}
+
+#FixInformation button > p:hover {
+  background-color: #f0f2f5;
+}
+
+#FixInformation .children {
+  padding: 0 5px;
+  display: none;
+}
+
+#FixInformation .children.active {
+  display: block;
+}
+
+#FixInformation .child {
+  padding: 5px;
+}
+
+#groupNameInfor {
+  font-size: 15px;
+}
+
+#WrapperAccountOnline {
+  display: none;
+}
+
+#ChatGroup {
+  flex-grow: 1;
+}
+
+#more-action {
+  position: relative;
+}
+
+button.icon #select-box {
+  position: absolute;
+  bottom: 0;
+  width: 300px;
+  top: 110%;
+  left: -20px;
+  height: fit-content;
+  box-shadow: 0px 0px 10px 1px #dfdfdf;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+button.icon #select-box p {
+  margin: 0;
+  text-align: left;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+button.icon #select-box p:hover {
+  background-color: #f0f2f5 !important;
+}
+
+#ChatGroup > div:has(#inputSearchUserByEmail) {
+  display: flex !important;
+  align-items: center;
+  border-bottom: 1px solid #f0f2f5;
+  position: relative;
+}
+
+#inputSearchUserByEmail {
+  flex-grow: 1;
+  background-color: transparent !important;
+}
+
+#inputSearchUserByEmail:is(:focus) + div {
+  background-color: #fff;
+  width: 350px;
+  height: 200px;
+  position: absolute;
+  top: 110%;
+  left: 20px;
+  box-shadow: 0px 0px 10px 1px #dfdfdf;
+  border-radius: 10px;
+}
