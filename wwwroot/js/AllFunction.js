@@ -142,6 +142,10 @@ function ClickSearchUserByEmail(myEmail) {
   divInsert.appendChild(label);
   divInsert.appendChild(input);
   divInsert.appendChild(div);
+  if (chatGroup.firstChild.id != "titleOfGroup") {
+    chatGroup.firstChild.remove();
+  }
+
   chatGroup.insertBefore(divInsert, chatGroup.firstChild);
 }
 
