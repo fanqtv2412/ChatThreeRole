@@ -2,6 +2,7 @@
 *.dll
 *.vsidx
 *.d2
+*.lock
 /obj/Debug/net6.0/ref/ChatThreeRole.dll
 /bin/Debug/net6.0/ChatThreeRole.dll
 /obj/Debug/net6.0/refint/ChatThreeRole.dll
