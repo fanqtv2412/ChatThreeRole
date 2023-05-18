@@ -147,7 +147,8 @@ function countTime(time){
     }, 60000);
 }
 
-async function CreateTempGroup(nameAccount, id, avatar, email,  myEmail){
+async function CreateTempGroup(nameAccount, id, avatar, email, myEmail) {
+    console.log(nameAccount);
     var div    = document.createElement('div');
     var button = document.createElement('button');
     var img    = document.createElement('img');

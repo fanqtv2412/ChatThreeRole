@@ -172,12 +172,12 @@ async function CaptureSearchUserByEmail(event, email) {
   var tempBody = document.getElementById("searchContent");
   tempBody.innerHTML = "";
 
-  for (let i = 0; i < arrName.length; i++) {
+    for (let i = 0; i < arrAccount.length; i++) {
     var div = await CreateTempGroup(
-      arrName[i].fullName,
-      arrName[i].email,
-      arrName[i].avatar,
-      arrName[i].email,
+        arrAccount[i].fullName,
+        arrAccount[i].email,
+        arrAccount[i].avatar,
+        arrAccount[i].email,
       email
     );
     div.style.marginTop = "5px";
