@@ -131,12 +131,11 @@ function ClickSearchUserByEmail(myEmail) {
   input.style.border = "none";
   input.id = "inputSearchUserByEmail";
   var div = document.createElement("div");
+  div.id = "searchContent";
   //input.setAttribute('onchange', 'CaptureSearchUserByEmail(event, " ' + myEmail + ' ")');
-  input.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      CaptureSearchUserByEmail(event, myEmail);
-    }
+  input.addEventListener("input", function (event) {
+    event.preventDefault();
+    CaptureSearchUserByEmail(event, myEmail);
   });
 
   divInsert.appendChild(label);
@@ -150,19 +149,19 @@ function ClickSearchUserByEmail(myEmail) {
 }
 
 async function CaptureSearchUserByEmail(event, email) {
-  var body = document.getElementById("ChatGroup");
-  var tempBody = document.getElementById("tempBody");
-  if (tempBody) {
-    body.removeChild(tempBody);
-  }
+  //var body = document.getElementById("ChatGroup");
+  //var tempBody = document.getElementById("tempBody");
+  //if (tempBody) {
+  //  body.removeChild(tempBody);
+  //}
   var arrAccount = await GetAllAcc();
   console.log(arrAccount);
   var PATTERN = event.target.value;
   var arrName = arrAccount.filter(function (el) {
     return el.fullName.toLowerCase().includes(PATTERN);
   });
-  var tempBody = document.createElement("div");
-  tempBody.id = "tempBody";
+  var tempBody = document.getElementById("searchContent");
+  tempBody.innerHTML = "";
 
   for (let i = 0; i < arrName.length; i++) {
     var div = await CreateTempGroup(
