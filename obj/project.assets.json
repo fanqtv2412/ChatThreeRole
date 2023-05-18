@@ -2009,19 +2009,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\datnt4\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\ChatThreeRole\\ChatThreeRole.csproj",
+      "projectUniqueName": "D:\\DatNT4\\Repo\\ChatThreeRole\\ChatThreeRole.csproj",
       "projectName": "ChatThreeRole",
-      "projectPath": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\ChatThreeRole\\ChatThreeRole.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\ChatThreeRole\\obj\\",
+      "projectPath": "D:\\DatNT4\\Repo\\ChatThreeRole\\ChatThreeRole.csproj",
+      "packagesPath": "C:\\Users\\datnt4\\.nuget\\packages\\",
+      "outputPath": "D:\\DatNT4\\Repo\\ChatThreeRole\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\datnt4\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2087,7 +2087,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
