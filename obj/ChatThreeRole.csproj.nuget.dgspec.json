@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DatNT4\\Repo\\ChatThreeRole\\ChatThreeRole.csproj": {}
+    "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\NewRepo\\ChatThreeRole\\ChatThreeRole.csproj": {}
   },
   "projects": {
-    "D:\\DatNT4\\Repo\\ChatThreeRole\\ChatThreeRole.csproj": {
+    "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\NewRepo\\ChatThreeRole\\ChatThreeRole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DatNT4\\Repo\\ChatThreeRole\\ChatThreeRole.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\NewRepo\\ChatThreeRole\\ChatThreeRole.csproj",
         "projectName": "ChatThreeRole",
-        "projectPath": "D:\\DatNT4\\Repo\\ChatThreeRole\\ChatThreeRole.csproj",
-        "packagesPath": "C:\\Users\\datnt4\\.nuget\\packages\\",
-        "outputPath": "D:\\DatNT4\\Repo\\ChatThreeRole\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\NewRepo\\ChatThreeRole\\ChatThreeRole.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\DatNT4\\TotNghiep\\NewRepo\\ChatThreeRole\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\datnt4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -80,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

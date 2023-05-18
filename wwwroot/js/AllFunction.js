@@ -119,24 +119,33 @@ async function handleScrollMessage(id, name) {
 }
 
 function ClickSearchUserByEmail(myEmail) {
-  var divInsert = document.createElement("div");
-  divInsert.style.display = "inline-block";
-  var label = document.createElement("label");
-  label.textContent = "To: ";
-  label.style.marginRight = "5px";
-  var input = document.createElement("input");
-  document.getElementById("titleOfGroup").style.display = "none";
-  var chatGroup = document.getElementById("ChatGroup");
-  input.placeholder = "Enter name user";
-  input.style.border = "none";
-  input.id = "inputSearchUserByEmail";
-  var div = document.createElement("div");
-  div.id = "searchContent";
-  //input.setAttribute('onchange', 'CaptureSearchUserByEmail(event, " ' + myEmail + ' ")');
-  input.addEventListener("input", function (event) {
-    event.preventDefault();
-    CaptureSearchUserByEmail(event, myEmail);
-  });
+    var divInsert = document.createElement("div");
+    divInsert.id = "search-area";
+    divInsert.style.display = "inline-block";
+    var label = document.createElement("label");
+    label.textContent = "To: ";
+    label.style.marginRight = "5px";
+    var input = document.createElement("input");
+    document.getElementById("titleOfGroup").style.display = "none";
+    var chatGroup = document.getElementById("ChatGroup");
+    input.placeholder = "Enter name user";
+    input.style.border = "none";
+    input.id = "inputSearchUserByEmail";
+    var div = document.createElement("div");
+    div.id = "searchContent";
+    //input.setAttribute('onchange', 'CaptureSearchUserByEmail(event, " ' + myEmail + ' ")');
+    input.addEventListener("focusout", function (event) {
+        document.getElementById('searchContent').innerHTML='';
+    });
+
+    /*input.addEventListener("focusin", function (event) {
+        CaptureSearchUserByEmail(event, myEmail);
+    });*/
+
+    input.addEventListener("input", function (event) {
+        event.preventDefault();
+        CaptureSearchUserByEmail(event, myEmail);
+    });
 
   divInsert.appendChild(label);
   divInsert.appendChild(input);
@@ -149,7 +158,7 @@ function ClickSearchUserByEmail(myEmail) {
 }
 
 async function CaptureSearchUserByEmail(event, email) {
-  //var body = document.getElementById("ChatGroup");
+  var body = document.getElementById("ChatGroup");
   //var tempBody = document.getElementById("tempBody");
   //if (tempBody) {
   //  body.removeChild(tempBody);
