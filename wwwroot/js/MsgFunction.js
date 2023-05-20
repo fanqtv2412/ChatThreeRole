@@ -34,10 +34,10 @@ async function SendMessageToGroupFunc(constGroupName, Name, constGroupID, email)
     var mess = $("#messageToGroup").val();
     if (mess) {
         console.log(constGroupName);
-        var div = await CreateGroup(constGroupName, constGroupID, tempImg, email + ": " + mess, Date.now(), email);
-
         var tempDiv = document.getElementById(constGroupID);
         var tempImg = tempDiv.getElementsByTagName('img')[0].src;
+        var div = await CreateGroup(constGroupName, constGroupID, tempImg, email + ": " + mess, Date.now(), email);
+
         await connection.invoke("SendMessageToGroup", constGroupName.trim(), email + ": " + mess, constGroupID.toString());
         var li = DisplayMessageSender(mess);
         document.getElementById("listMessageGroup").appendChild(li);
